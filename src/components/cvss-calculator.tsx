@@ -3,6 +3,7 @@ import { metrics } from "@/lib/cvss";
 import { calculateCVSSScore } from "@/lib/cvss";
 import { MetricCard } from "./metric-card";
 import { ScoreDisplay } from "./score-display";
+import { BountyEstimate } from "./bounty-estimate";
 import { Skull, Terminal } from "lucide-react";
 
 export function CVSSCalculator() {
@@ -29,7 +30,7 @@ export function CVSSCalculator() {
   return (
     <>
       <div className="scanline" />
-      <div className="container mx-auto p-6 w-full">
+      <div className="w-full p-6">
         <div className="text-center mb-8 space-y-4 animate-fade-in">
           <div className="flex items-center justify-center gap-2">
             <Terminal className="w-8 h-8 text-green-500 animate-pulse" />
@@ -43,7 +44,7 @@ export function CVSSCalculator() {
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2 max-w-7xl mx-auto">
+        <div className="grid gap-6 lg:grid-cols-2 mx-auto mb-6">
           <div className="space-y-6">
             {Object.entries(metrics).slice(0, 4).map(([metric, options]) => (
               <MetricCard
@@ -65,8 +66,12 @@ export function CVSSCalculator() {
                 onChange={(value) => handleChange(metric, value)}
               />
             ))}
-            <ScoreDisplay score={score} metrics={values} />
           </div>
+        </div>
+
+        <div className="space-y-6">
+          <ScoreDisplay score={score} metrics={values} />
+          <BountyEstimate score={score} />
         </div>
       </div>
     </>

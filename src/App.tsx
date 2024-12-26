@@ -2,7 +2,7 @@ import { CVSSCalculator } from "@/components/cvss-calculator";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground w-full">
       <CVSSCalculator />
     </div>
   );
